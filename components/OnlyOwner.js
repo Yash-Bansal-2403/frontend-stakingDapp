@@ -1,7 +1,7 @@
 import { HomeContext } from "@/contexts/stakingContext";
 import React, { Fragment, useContext } from "react";
 import FundStakingContract from "./FundStakingContract";
-import Spier from "./Spier";
+import Spier from "./Spinner";
 import OwnerInteraction from "./OwnerInteraction";
 
 function OnlyOwner() {

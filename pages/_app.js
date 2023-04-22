@@ -2,7 +2,7 @@ import "@/styles/globals.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import { getDefaultWallets, RainbowKitProvider } from "@rainbow-me/rainbowkit";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
-import { goerli, hardhat, sepolia } from "wagmi/chains";
+import { goerli, hardhat, polygonMumbai, sepolia } from "wagmi/chains";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { jsonRpcProvider } from "@wagmi/core/providers/jsonRpc";
 import { infuraProvider } from "wagmi/providers/infura";
@@ -12,17 +12,19 @@ import Header from "@/components/Header";
 import { HomeProvider } from "@/contexts/stakingContext";
 import { ContractDataProvider } from "@/contexts/contractDataContext";
 import { ToastContainer } from "react-toastify";
+import React from "react";
 
 //Ans:
 //Only having publicProvider in your providers will make the chain use the public RPC URL which could lead to rate-limiting. It is recommended to also include another provider in your list (such as: alchemyProvider, infuraProvider or jsonRpcProvider).
 
 export default function App({ Component, pageProps }) {
   const { chains, provider } = configureChains(
-    [goerli, sepolia, hardhat],
+    [goerli, sepolia, polygonMumbai, hardhat],
     [
-      infuraProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID_GOERLI }),
       publicProvider(),
-      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_INFURA_ID_SEPOLIA }),
+      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID_GOERLI }),
+      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID_SEPOLIA }),
+      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID_MUMBAI }),
       jsonRpcProvider({
         rpc: (chain) => ({
           http: `http://127.0.0.1:8545/`,

@@ -11,13 +11,19 @@ function Header() {
       <div className="flex flex-row items-center">
         <nav className="flex flex-row justify-center">
           <ConnectButton />
-          {/** metamask se chain change krne pr ye button erong network bta rha                                                                             h localhost p jbki wo added h app.js m configured h ,,isse check krna  ?? */}
+
           {isOwner ? (
             <div>
-              <Link href="/" className="bg-teal-500 hover:bg-yellow-400 rounded-xl px-5 py-1 mx-5 transition duration-300 ease-in-out shadow-lg text-lg">
+              <Link
+                href="/"
+                className="bg-teal-500 hover:bg-yellow-400 rounded-xl px-5 py-1 mx-5 transition duration-300 ease-in-out shadow-lg text-lg"
+              >
                 Home
               </Link>
-              <Link href="/owner" className="bg-teal-500 hover:bg-yellow-400 rounded-xl px-2 py-1 mx-5 transition duration-300 ease-in-out shadow-lg text-lg">
+              <Link
+                href="/owner"
+                className="bg-teal-500 hover:bg-yellow-400 rounded-xl px-2 py-1 mx-5 transition duration-300 ease-in-out shadow-lg text-lg"
+              >
                 For Owner Only
               </Link>
             </div>

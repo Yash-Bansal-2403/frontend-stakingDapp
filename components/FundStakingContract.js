@@ -9,13 +9,11 @@ import { HomeContext } from "@/contexts/stakingContext";
 import onNotify from "@/utils/onNotify";
 
 function FundStakingContract() {
-  //sbke bahar ye kyu chlta h pta nhi kb kb chlta h pta nhi baki useEffcetc and return ka ot pta h?? mujhe lgta tha firest time m ek hi bar chlat h pr ye to is compoeet ki har state change pr hcl ja rha aur call m bhi kyu ??
   console.log("outside everything in fund ");
   const [fundAmount, updateFundAmount, resetFundAmount] = useInputState("");
   const [spenderBalance, setSpenderBalance] = useState(0);
   const [spender, setSpender] = useState(0);
   const [ownerNTROBalance, setOwnerNTROBalance] = useState(0);
-  // const [isLoading, setIsLoading] = useState(false);
   const { isDisabled, setIsDisabled } = useContext(HomeContext);
 
   useEffect(() => {
@@ -23,7 +21,9 @@ function FundStakingContract() {
       try {
         const erc20Contract = await createERC20Instance();
         const stakingAddress = await stakingContractAddress();
-        const spenderBalanceFromCall = await erc20Contract.balanceOf(stakingAddress);
+        const spenderBalanceFromCall = await erc20Contract.balanceOf(
+          stakingAddress
+        );
         setSpenderBalance(
           // @ts-ignore
           ethers.utils.formatEther(spenderBalanceFromCall).toString()
@@ -67,9 +67,17 @@ function FundStakingContract() {
           Balance of NTRO staking contract <b>{spenderBalance}</b> NTRO Tokens
         </div>
         <label htmlFor="fund" className="block text-gray-700 font-bold mb-2">
-          Enter the amount to Fund the staking contract from your <b> {ownerNTROBalance}</b> NTRO Tokens
+          Enter the amount to Fund the staking contract from your{" "}
+          <b> {ownerNTROBalance}</b> NTRO Tokens
         </label>
-        <input type="number" id="fund" value={fundAmount} onChange={updateFundAmount} className="border border-gray-300 py-2 px-4 rounded-md w-full" placeholder="No.of Tokens to fund" />
+        <input
+          type="number"
+          id="fund"
+          value={fundAmount}
+          onChange={updateFundAmount}
+          className="border border-gray-300 py-2 px-4 rounded-md w-full"
+          placeholder="No.of Tokens to fund"
+        />
         <button
           className={
             !isDisabled

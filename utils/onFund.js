@@ -16,7 +16,8 @@ const onFund = async (amount, spender, setSpenderBalance) => {
   await tx.wait(1);
   // console.log("Token Approved");
 
-  const spenderBalance = await erc20Contract.balanceOf(spender); //view h so value return krega txn nhi
+  const spenderBalance = await erc20Contract.balanceOf(spender);
+  //view function return value not transaction
   setSpenderBalance(ethers.utils.formatEther(spenderBalance).toString());
 };
 export default onFund;

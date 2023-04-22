@@ -1,4 +1,5 @@
 import OnlyOwner from "@/components/OnlyOwner";
+import React from "react";
 
 function owner() {
   return (

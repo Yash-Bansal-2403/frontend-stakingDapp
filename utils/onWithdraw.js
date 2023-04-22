@@ -9,7 +9,9 @@ const onWithdraw = async (amount, setStakedTokens) => {
   await tx.wait(1);
 
   console.log("Token withdrawal");
-  const updatedBalanceOfUser = await stakingContract.getStakedBalanceOfUser(owner);
+  const updatedBalanceOfUser = await stakingContract.getStakedBalanceOfUser(
+    owner
+  );
   setStakedTokens(ethers.utils.formatEther(updatedBalanceOfUser).toString());
 };
 export default onWithdraw;

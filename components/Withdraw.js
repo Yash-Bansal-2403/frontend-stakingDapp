@@ -3,6 +3,7 @@ import { HomeContext } from "@/contexts/stakingContext";
 import useInputState from "@/hooks/useInputState";
 import onNotify from "@/utils/onNotify";
 import onWithdraw from "@/utils/onWithdraw";
+import React from "react";
 import { useContext } from "react";
 
 function Withdraw() {
@@ -23,7 +24,7 @@ function Withdraw() {
 
       reset();
     } catch (err) {
-      onNotify(false, "Transaction Failed 😞"); //agr ye fail hui to code fat jayega iska kuch kro ??
+      onNotify(false, "Transaction Failed 😞");
       console.error(err);
       reset();
     }

@@ -6,11 +6,14 @@ import {
 import currentConnectedAccount from "@/ethereum/currentConnectedAccount";
 import { ethers } from "ethers";
 import { createContext, useContext, useEffect, useState } from "react";
+// @ts-ignore
 import { getAccount } from "@wagmi/core";
 import { HomeContext } from "./stakingContext";
 
+// @ts-ignore
 export const ContractDataContext = createContext();
 
+// @ts-ignore
 export function ContractDataProvider(props) {
   const [stakedTokens, setStakedTokens] = useState("");
   const [totalSupply, setTotalSupply] = useState("0");
@@ -29,10 +32,10 @@ export function ContractDataProvider(props) {
           owner,
           stakingAddress
         );
-        // console.log("m to chal rha hu", account);
         const totalSupplyFromCall =
           await stakingContract.getTotalStakedTokens();
         setApprovedTokens(
+          // @ts-ignore
           ethers.utils.formatEther(approvedTokensFromCall).toString()
         );
         const stakedTokensFromCall =
@@ -51,7 +54,8 @@ export function ContractDataProvider(props) {
     setValue();
   }, [approvedTokens, stakedTokens, currentAccount, chainId]);
   return (
-    <ContractDataContext.Provider
+    <// @ts-ignore
+    ContractDataContext.Provider
       value={{
         stakedTokens,
         setStakedTokens,
